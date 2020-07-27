@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "b56e4665-a989-42ff-b269-4be7dd5bddc7",
+		"name": "API_TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nick\":\"AmmoralesO\",\n\t\"name\":\"Andres Morales\",\n\t\"password\":\"asdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/addUser",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"addUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "95b89f69-5ee8-47ed-96d6-e393215387c3",
+						"exec": [
+							"if(pm.response.code === 200){",
+							"    pm.environment.set('authToken', pm.response.json().token)",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nick\":\"ammoraleso\",\n\t\"password\":\"asdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logoutAll",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/logoutAll",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"logoutAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://consultaprocesos.ramajudicial.gov.co/Procesos/NumeroRadicacion?IdProceso=11001332603720060009400&TipoConsulta=NumeroRadicacion&NumeroRadicacion=11001332603720060009400",
+					"protocol": "https",
+					"host": [
+						"consultaprocesos",
+						"ramajudicial",
+						"gov",
+						"co"
+					],
+					"path": [
+						"Procesos",
+						"NumeroRadicacion"
+					],
+					"query": [
+						{
+							"key": "IdProceso",
+							"value": "11001332603720060009400"
+						},
+						{
+							"key": "TipoConsulta",
+							"value": "NumeroRadicacion"
+						},
+						{
+							"key": "NumeroRadicacion",
+							"value": "11001332603720060009400"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Legal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/legal?IdProceso=0&NumeroRadicacion=11001332603720060009400",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"legal"
+					],
+					"query": [
+						{
+							"key": "IdProceso",
+							"value": "0"
+						},
+						{
+							"key": "TipoConsulta",
+							"value": "NumeroRadicacion",
+							"disabled": true
+						},
+						{
+							"key": "NumeroRadicacion",
+							"value": "11001332603720060009400"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/getRestaurants?city=Bogota",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"getRestaurants"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Bogota"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "58ecda2f-9cef-469d-aaa3-bfa0ccefd8c0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "da5dbac8-bfd5-4e62-8da1-b777d7020916",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
