@@ -1,0 +1,17 @@
+## Uso de Postman
+
+    - Se deberá crea dos variables sobre la tuerca de configuracion de la derecha superior.
+    el valor del authToken se peude sacar del generate token del user.
+
+        url : (initical value) localhost:3000 - (current_value) localhost:3000
+        authToken : (current_value) eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWQ4MWRiOWMyMDRlZTJmYTg5NGQ3ZGUiLCJpYXQiOjE1OTU1MTY1MzF9.Y8sm98U2g3R1wvG6HXZMkpKtOeOs4lhgUileA19w3mQ
+        
+    - Al servicio de login se le debe añadir el siguiente script en la pestaña de test
+
+        if(pm.response.code === 200){
+            pm.environment.set('authToken',pm.response.json().token)
+        }
+
+    - Click derecho a la coleccion donde se trabaja y dar editar, en el tab de Autorization seleccionar 
+
+        Bearer Token y en la parte derecha Token : {{authToken}}

@@ -1,0 +1,22 @@
+#NPM Modules
+node_modules
+package-lock.json
+
+#IDE - Debug
+.vscode
+.idea
+
+#logs
+logs
+logsDocker
+
+#Jest Coverage
+coverage
+
+.env
+
+#testing json
+
+output.json
+sailings.json
+coverage
