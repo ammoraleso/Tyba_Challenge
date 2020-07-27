@@ -1,0 +1,22 @@
+version: "3"
+services:
+  docker_api:
+    container_name: docker_api
+    image: docker_api
+    build:
+      context: .
+      dockerfile: Dockerfile.dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app/*
+      - ./logs/logsDocker:/usr/src/app/logs
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    logging:
+      driver: "none"
+    ports:
+      - "27017:27017"

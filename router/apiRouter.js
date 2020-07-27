@@ -18,7 +18,7 @@ router.get('/getRestaurants', auth, async (req, res) => {
     const response = await axios.get(url);
     const transaction = new Transaction({ transaction: '/getRestaurants' });
     await transaction.save();
-    return res.send(response.data);
+    return res.send(response.data.results.items);
   } catch (error) {
     res.status(401).send(error.message);
   }
