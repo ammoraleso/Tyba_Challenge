@@ -1,4 +1,4 @@
-## Uso de Postman
+## Uso de Postman para test.
 
     - Se deberá crea dos variables sobre la tuerca de configuracion de la derecha superior.
     el valor del authToken se peude sacar del generate token del user.
